@@ -4,7 +4,7 @@ import warnings
 
 from datetime import datetime
 
-from crew_project.crew import LatestTechAnalysis
+from crew_project.crew import YouTubeScript
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
@@ -18,28 +18,29 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'Blockchain',
+        'topic': input("Write a topic for a YouTube video: "),
         'current_year': str(datetime.now().year)
     }
     
     try:
-        LatestTechAnalysis().crew().kickoff(inputs=inputs)
+        YouTubeScript().crew().kickoff(inputs=inputs)
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 
 
-# def train():
-#     """
-#     Train the crew for a given number of iterations.
-#     """
-#     inputs = {
-#         "topic": "AI LLMs"
-#     }
-#     try:
-#         CrewProject().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
+def train():
+    """
+    Train the crew for a given number of iterations.
+    """
+    inputs = {
+        'topic': input("Write a topic for a YouTube video: "),
+        'current_year': str(datetime.now().year)
+    }
+    try:
+        YouTubeScript().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
 
-#     except Exception as e:
-#         raise Exception(f"An error occurred while training the crew: {e}")
+    except Exception as e:
+        raise Exception(f"An error occurred while training the crew: {e}")
 
 # def replay():
 #     """
